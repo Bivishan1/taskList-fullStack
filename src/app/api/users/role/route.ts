@@ -2,7 +2,7 @@ import { getServerSession } from "next-auth/next"
 import { NextRequest, NextResponse } from "next/server"
 import  {authOptions} from "@/app/api/auth/authOptions"
 import { prisma } from "../../../../../prisma/client" // Adjust the import path as necessary
-import { Role } from "@prisma/client"
+// import { Role } from "@prisma/client";
 // import { Role } from "@prisma/client" // Import Role type from Prisma
 
 // const prisma = new PrismaClient()
@@ -24,7 +24,7 @@ export async function PUT(request: NextRequest) {
     
     const user = await prisma.user.update({
       where: { id: session.user.id as string },
-      data: { role: role as Role },
+      data: { role: role },
     })
     
     return NextResponse.json(user)
